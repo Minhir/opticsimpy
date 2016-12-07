@@ -186,6 +186,10 @@ class LinearPolarizerVertical(Element):
 class LinearRetarder(Element):
 
     def __init__(self, theta=0, delta=0):
+        """
+        :param theta: axis angle
+        :param delta: phase delta
+        """
         theta = theta * pi / 180
         delta = delta * pi / 180
         self.delta = delta
@@ -201,14 +205,14 @@ class LinearRetarder(Element):
         self.M21 = 0
         self.M22 = c2 ** 2 + cd * s2 ** 2
         self.M23 = c2 * s2 - c2 * cd * s2
-        self.M24 = s2 * sd
+        self.M24 = -s2 * sd
         self.M31 = 0
         self.M32 = c2 * s2 - c2 * cd * s2
         self.M33 = cd * c2 ** 2 + s2 ** 2
-        self.M34 = -c2 * sd
+        self.M34 = c2 * sd
         self.M41 = 0
-        self.M42 = -s2 * sd
-        self.M43 = c2 * sd
+        self.M42 = s2 * sd
+        self.M43 = -c2 * sd
         self.M44 = cd
 
 

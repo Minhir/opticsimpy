@@ -16,16 +16,10 @@ class Light:
     """
 
     def __init__(self, I=1., Q=0., U=0., V=0.):
-        self.I = I
-        if I < sqrt(Q**2 + U**2 + V**2):
-            norm = 1 / (Q**2 + U**2 + V**2) ** 0.5
-            self.Q = Q * norm
-            self.U = U * norm
-            self.V = V * norm
-        else:
-            self.Q = Q
-            self.U = U
-            self.V = V
+        self.I = sqrt(Q**2 + U**2 + V**2)
+        self.Q = Q
+        self.U = U
+        self.V = V
 
     def __add__(self, other):
         if isinstance(other, Light):
@@ -74,7 +68,7 @@ class Light:
         ax.axvline(0, color='black', alpha=1)
         ax.add_patch(ellipse)
         ax.arrow(-0.3*size*h, 0.95*size, 0.6*size*h, 0, fc="k", ec="k", head_width=0.02, head_length=0.02)
-        plt.show(block=False)
+        plt.show(block=True)
 
 
 class LinearlyPolarizedHorizontal(Light):

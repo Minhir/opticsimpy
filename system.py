@@ -12,9 +12,9 @@ class System:
         self.matrix = dot(element.get_matrix(), self.matrix)
 
     def add_elements(self, *elements):
-        for i in elements:
-            self.elements_list.append(i.get_matrix())
-            self._calculate_(i)
+        for element in elements:
+            self.elements_list.append(element.get_matrix())
+            self._calculate_(element)
 
     def count(self, ray):
         el = dot(self.matrix, ray.get_matrix())
